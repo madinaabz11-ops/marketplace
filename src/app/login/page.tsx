@@ -29,6 +29,12 @@ export default function LoginPage() {
           <input id="password" name="password" type="password" autoComplete="current-password" required />
         </div>
 
+        <p className={styles.forgot}>
+          <Link href="/forgot-password" className="link">
+            Забыли пароль?
+          </Link>
+        </p>
+
         <button type="submit" className="btn btn--primary btn--block" disabled={pending}>
           {pending ? "Входим..." : "Войти"}
         </button>

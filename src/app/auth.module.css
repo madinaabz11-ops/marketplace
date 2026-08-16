@@ -23,3 +23,16 @@
   color: var(--ink-soft);
   text-align: center;
 }
+
+.forgot {
+  margin: -8px 0 18px;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
+.note {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
