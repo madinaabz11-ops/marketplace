@@ -1,0 +1,39 @@
+import type { Metadata } from "next";
+import { Space_Grotesk, Public_Sans } from "next/font/google";
+import "./globals.css";
+import { getCurrentUser } from "@/lib/auth";
+import { getCartCount } from "@/lib/cart";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
+  subsets: ["latin", "cyrillic"],
+  weight: ["500", "600", "700"],
+});
+
+const publicSans = Public_Sans({
+  variable: "--font-body",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+});
+
+export const metadata: Metadata = {
+  title: "Wiskons - маркетплейс товаров",
+  description: "Новые товары от разных продавцов в одном месте. Поиск по категориям, цене и городу.",
+};
+
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const user = await getCurrentUser();
+  const cartCount = await getCartCount(user?.id);
+
+  return (
+    <html lang="ru" className={`${spaceGrotesk.variable} ${publicSans.variable}`}>
+      <body>
+        <Header user={user} cartCount={cartCount} />
+        {children}
+        <Footer user={user} />
+      </body>
+    </html>
+  );
+}

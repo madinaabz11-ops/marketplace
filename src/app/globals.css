@@ -1,0 +1,250 @@
+/* =========================================================
+   WISKONS - маркетплейс товаров
+   ========================================================= */
+
+:root {
+  --bg:          #0e0e12;
+  --bg-deep:     #17171c;
+  --surface:     #1b1b21;
+  --ink:         #f4f4f0;
+  --ink-soft:    #b7b7c0;
+  --ink-faint:   #7e7e89;
+  --line:        #38383f;
+  --line-soft:   #2a2a30;
+
+  --accent:      #8b5cf6;
+  --accent-deep: #a97dff;
+  --accent-pale: #251d3d;
+
+  --lime:        #a3c451;
+  --lime-deep:   #87a33f;
+
+  --danger:      #ff5c4d;
+  --danger-deep: #ff8177;
+
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body:    "Public Sans", "Segoe UI", sans-serif;
+
+  --wrap: 1240px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --radius: 3px;
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 18px 40px -14px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 30px 64px -18px rgba(0, 0, 0, 0.7);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+ul, ol { list-style: none; }
+
+button { font: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+
+input, select, textarea { font: inherit; color: inherit; }
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+main { flex: 1; }
+
+/* =========================================================
+   TYPE HELPERS
+   ========================================================= */
+.eyebrow {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 4px;
+}
+
+.h1 {
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  letter-spacing: -0.015em;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 26px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease),
+    transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.btn--primary {
+  background: var(--lime);
+  color: #10120a;
+  box-shadow: 0 0 0 rgba(198, 240, 0, 0);
+}
+.btn--primary:hover {
+  background: var(--lime-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px -6px rgba(198, 240, 0, 0.45);
+}
+
+.btn--secondary {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn--secondary:hover {
+  background: var(--ink);
+  color: var(--bg);
+  transform: translateY(-1px);
+}
+
+.btn--ghost {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+.btn--ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+  transform: translateY(-1px);
+}
+
+.btn--block { width: 100%; }
+.btn--sm { padding: 9px 16px; font-size: 0.85rem; }
+
+.link {
+  position: relative;
+  font-weight: 600;
+  color: var(--accent-deep);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.link:hover { border-color: var(--accent); color: var(--accent); }
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+
+.field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover { border-color: var(--ink-faint); }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-pale);
+}
+
+.field textarea { resize: vertical; min-height: 120px; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+@media (max-width: 420px) {
+  .field-row { grid-template-columns: 1fr; }
+}
+
+.form-error {
+  background: rgba(255, 92, 77, 0.12);
+  border: 1px solid var(--danger);
+  color: var(--danger-deep);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+.form-card {
+  max-width: 440px;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 40px;
+  animation: fadeInUp 0.5s var(--ease) both;
+}
+
+/* =========================================================
+   MOTION
+   ========================================================= */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in-up { animation: fadeInUp 0.6s var(--ease) both; }
+
+.btn:active { transform: scale(0.96); }
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

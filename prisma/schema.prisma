@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  city         String?
+  createdAt    DateTime   @default(now())
+  listings     Listing[]
+  cartItems    CartItem[]
+  orders       Order[]
+}
+
+model Listing {
+  id          String      @id @default(cuid())
+  title       String
+  description String
+  price       Int
+  category    String
+  city        String
+  imageUrl    String?
+  status      String      @default("active")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  seller      User        @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  sellerId    String
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+
+  @@index([category])
+  @@index([city])
+  @@index([price])
+}
+
+model CartItem {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listingId String
+
+  @@unique([userId, listingId])
+}
+
+model Order {
+  id         String      @id @default(cuid())
+  totalPrice Int
+  city       String
+  address    String
+  phone      String
+  createdAt  DateTime    @default(now())
+  buyer      User        @relation(fields: [buyerId], references: [id], onDelete: Cascade)
+  buyerId    String
+  items      OrderItem[]
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  title     String
+  price     Int
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId   String
+  listing   Listing? @relation(fields: [listingId], references: [id], onDelete: SetNull)
+  listingId String?
+}

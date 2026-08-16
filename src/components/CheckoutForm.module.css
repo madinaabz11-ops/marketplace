@@ -1,0 +1,10 @@
+.form { max-width: none; }
+
+.note {
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  padding: 12px 14px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+}

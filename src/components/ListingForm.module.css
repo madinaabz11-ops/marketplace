@@ -1,0 +1,16 @@
+.form {
+  max-width: 560px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.currentImage {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 6px);
+  margin-bottom: 10px;
+}
