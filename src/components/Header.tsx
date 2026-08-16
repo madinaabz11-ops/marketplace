@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import styles from "./Header.module.css";
 
 type User = {
@@ -7,6 +11,13 @@ type User = {
 } | null;
 
 export default function Header({ user, cartCount = 0 }: { user: User; cartCount?: number }) {
+  const pathname = usePathname();
+  const menuToggleRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (menuToggleRef.current) menuToggleRef.current.checked = false;
+  }, [pathname]);
+
   return (
     <header className={styles.header}>
       <div className={`wrap ${styles.inner}`}>
@@ -23,7 +34,7 @@ export default function Header({ user, cartCount = 0 }: { user: User; cartCount?
           </span>
         </Link>
 
-        <input type="checkbox" id="menu-toggle" className={styles.menuToggle} />
+        <input type="checkbox" id="menu-toggle" ref={menuToggleRef} className={styles.menuToggle} />
         <label htmlFor="menu-toggle" className={styles.burger} aria-label="Открыть меню">
           <span></span>
           <span></span>
