@@ -8,13 +8,13 @@ import Footer from "@/components/Footer";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   weight: ["500", "600", "700"],
 });
 
 const publicSans = Public_Sans({
   variable: "--font-body",
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
