@@ -55,7 +55,7 @@
 
 .bar > button { height: 50px; }
 
-.priceDash { color: var(--ink-faint); flex-shrink: 0; }
+.priceDash { color: var(--lime); font-weight: 700; flex-shrink: 0; }
 
 .search:hover,
 .select:hover,
