@@ -12,7 +12,8 @@
 
 .search {
   flex: 2 1 220px;
-  padding: 12px 14px;
+  height: 50px;
+  padding: 0 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--bg);
@@ -21,7 +22,8 @@
 
 .select {
   flex: 1 1 160px;
-  padding: 12px 14px;
+  height: 50px;
+  padding: 0 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--bg);
@@ -39,12 +41,15 @@
 .priceInput {
   width: 100%;
   min-width: 0;
-  padding: 12px 14px;
+  height: 50px;
+  padding: 0 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--bg);
   transition: border-color 0.2s var(--ease);
 }
+
+.bar > button { height: 50px; }
 
 .priceDash { color: var(--ink-faint); flex-shrink: 0; }
 
