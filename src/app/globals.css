@@ -161,7 +161,7 @@ main { flex: 1; }
 /* =========================================================
    FORMS
    ========================================================= */
-.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; min-width: 0; }
 
 .field label {
   font-size: 0.82rem;
@@ -172,6 +172,8 @@ main { flex: 1; }
 .field input,
 .field select,
 .field textarea {
+  width: 100%;
+  min-width: 0;
   padding: 12px 14px;
   background: var(--surface);
   border: 1px solid var(--line);
