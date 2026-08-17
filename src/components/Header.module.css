@@ -80,6 +80,11 @@
 .nav a:hover { color: var(--ink); }
 .nav > a:hover::after { transform: scaleX(1); }
 
+.nav a:global(.btn--primary),
+.nav a:global(.btn--primary):hover {
+  color: #10120a !important;
+}
+
 .postLink {
   color: var(--lime-deep) !important;
 }
