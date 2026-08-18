@@ -44,7 +44,7 @@ export default async function Home({
         </div>
       </section>
 
-      <section className="wrap">
+      <section id="listings" className={`wrap ${styles.listings}`}>
         <FilterBar q={q} category={category} city={city} minPrice={minPrice} maxPrice={maxPrice} />
 
         <div className={styles.resultsHead}>

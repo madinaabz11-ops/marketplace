@@ -16,7 +16,7 @@ export default function Footer({ user }: { user: User }) {
         </div>
 
         <nav className={styles.nav} aria-label="Навигация в подвале">
-          <Link href="/">Все объявления</Link>
+          <Link href="/#listings">Все объявления</Link>
           {user ? (
             <Link href="/account">Личный кабинет</Link>
           ) : (

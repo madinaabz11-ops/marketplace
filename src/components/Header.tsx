@@ -42,7 +42,7 @@ export default function Header({ user, cartCount = 0 }: { user: User; cartCount?
         </label>
 
         <nav className={styles.nav} aria-label="Основная навигация">
-          <Link href="/">Все объявления</Link>
+          <Link href="/#listings">Все объявления</Link>
           {user ? (
             <>
               <Link href="/account/new" className={styles.postLink}>

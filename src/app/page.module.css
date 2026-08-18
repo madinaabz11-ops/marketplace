@@ -35,6 +35,10 @@
   .heroGraphic { display: none; }
 }
 
+.listings {
+  scroll-margin-top: 96px;
+}
+
 .resultsHead {
   display: flex;
   align-items: baseline;
