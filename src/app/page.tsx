@@ -45,6 +45,7 @@ export default async function Home({
               </svg>
             </div>
             <p className={styles.heroTagline}>маркетплейс товаров</p>
+            <p className={styles.heroSlogan}>С человеческим лицом.</p>
           </div>
           <div className={`${styles.heroGraphic} fade-in-up`} style={{ animationDelay: "0.15s" }}>
             <HeroMark />

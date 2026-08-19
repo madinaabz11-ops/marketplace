@@ -46,6 +46,14 @@
   color: var(--accent-deep);
 }
 
+.heroSlogan {
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
 .heroGraphic {
   flex: 1 1 auto;
   align-self: stretch;
