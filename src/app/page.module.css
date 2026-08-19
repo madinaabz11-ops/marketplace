@@ -48,7 +48,7 @@
 
 .heroGraphic {
   flex: 1 1 auto;
-  max-width: 460px;
+  align-self: stretch;
   min-width: 0;
 }
 
