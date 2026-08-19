@@ -33,7 +33,7 @@ async function main() {
       description: "Новый, запечатан в заводской плёнке. Официальная гарантия 12 месяцев. Быстрая доставка.",
       price: 89000,
       category: "Электроника",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Blackview_A60_Smartphone_Android_mobile_phone_and_folio_case.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Xiaomi_Redmi_Note_10_Pro.jpg?width=600",
       sellerId: irina.id,
     },
     {
@@ -41,7 +41,7 @@ async function main() {
       description: "Новая, в заводской упаковке. Официальный гарантийный талон, чек прилагается.",
       price: 320000,
       category: "Электроника",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Gamecube-controller.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/PlayStation_5_and_DualSense_with_transparent_background.png?width=600",
       sellerId: sveta.id,
     },
     {
@@ -49,7 +49,7 @@ async function main() {
       description: "Новый велосипед в сборе. Рама 19 дюймов, 21 скорость. Гарантия производителя.",
       price: 145000,
       category: "Спорт и отдых",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Mountain_bike.JPG?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Instinctiv_gearbox_mountain_bike.jpg?width=600",
       sellerId: daniyar.id,
     },
     {
@@ -57,7 +57,7 @@ async function main() {
       description: "Новая, в упаковке. Полный комплект колышков и растяжек, инструкция внутри.",
       price: 28000,
       category: "Спорт и отдых",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Camping_tent_grass.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Coleman_Pop-Up_Tent.jpg?width=600",
       sellerId: daniyar.id,
     },
     {
@@ -65,7 +65,7 @@ async function main() {
       description: "Новый, в заводской упаковке. Механизм еврокнижка, сборка по инструкции.",
       price: 65000,
       category: "Мебель",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Couch_of_white.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sofa_bed_at_Ashley_HomeStore_-_December_2022_-_Sarah_Stierch.jpg?width=600",
       sellerId: sveta.id,
     },
     {
@@ -73,7 +73,7 @@ async function main() {
       description: "Новый стол ручной работы, 120х60 см. Покрытие лаком, гарантия 2 года.",
       price: 42000,
       category: "Мебель",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Gfp-office-desk-area.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Стол_руководителя.jpg?width=600",
       sellerId: daniyar.id,
     },
     {
@@ -81,7 +81,7 @@ async function main() {
       description: "Новая, с биркой, оригинал. Тёплый пуховый наполнитель.",
       price: 24000,
       category: "Одежда и обувь",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/FILA-Daunenjacke.JPG?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_Helionic_Down_Jacket.jpg?width=600",
       sellerId: irina.id,
     },
     {
@@ -89,7 +89,7 @@ async function main() {
       description: "Новые, оригинал. В комплекте коробка и чек.",
       price: 32000,
       category: "Одежда и обувь",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sneakers.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Nike_Air_Max_Plus_(604133-050).jpg?width=600",
       sellerId: irina.id,
     },
     {
@@ -97,7 +97,7 @@ async function main() {
       description: "Новый комплект, 8 книг: JavaScript, чистый код, алгоритмы. Прямо от издательства.",
       price: 18000,
       category: "Книги",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Pile_of_books.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/The_Art_of_Computer_Programming_(vol._1-4B)-2808.jpg?width=600",
       sellerId: sveta.id,
     },
     {
@@ -105,7 +105,7 @@ async function main() {
       description: "Новая, в заводской упаковке. Официальная гарантия 24 месяца.",
       price: 145000,
       category: "Дом и сад",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Lelit_Semiautomatic_Espresso_Machine_with_PID_and_Pressure_Gauge.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Krups_Vivo_F880_home_espresso_maker.jpg?width=600",
       sellerId: daniyar.id,
     },
     {
@@ -113,7 +113,7 @@ async function main() {
       description: "Новая, прогулочный блок и люлька в комплекте. Полная заводская гарантия.",
       price: 210000,
       category: "Детские товары",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Stroller_or_pram%2C_Siver_Cross.JPG?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Carrito_de_bebé_Vizaro_Pearl_Azul_Denim_Chasis_Blanco_Trío_3_en_1.jpg?width=600",
       sellerId: irina.id,
     },
     {
@@ -121,7 +121,7 @@ async function main() {
       description: "Новая, с чехлом и комплектом струн. Официальный дилер Yamaha.",
       price: 55000,
       category: "Хобби и творчество",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Yamaha_FG110_Acoustic_Guitar.JPG?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Yamaha_Acoustic_Guitar_FG-331v2.jpg?width=600",
       sellerId: sveta.id,
     },
   ];
