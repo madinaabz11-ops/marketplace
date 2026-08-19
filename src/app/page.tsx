@@ -33,10 +33,8 @@ export default async function Home({
       <section className={styles.hero}>
         <div className={`wrap ${styles.heroInner}`}>
           <div className="fade-in-up">
-            <p className="eyebrow">Wiskons</p>
-            <h1 className={`h1 ${styles.heroTitle}`}>
-              Маркетплейс <span className={styles.heroAccent}>товаров</span>
-            </h1>
+            <h1 className={styles.heroName}>Wiskons</h1>
+            <p className={styles.heroTagline}>Маркетплейс товаров</p>
             <p className={styles.heroText}>
               Новые товары от разных продавцов в одном месте - выбирайте по категории и цене.
             </p>

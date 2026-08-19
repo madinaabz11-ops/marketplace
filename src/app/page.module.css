@@ -13,12 +13,23 @@
   gap: 40px;
 }
 
-.heroTitle {
-  margin: 10px 0 14px;
-  max-width: 16ch;
+.heroName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.2rem, 7.5vw, 5.8rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
 }
 
-.heroAccent { color: var(--lime); }
+.heroTagline {
+  margin: 14px 0 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+}
 
 .heroText {
   max-width: 52ch;
@@ -28,10 +39,10 @@
 
 .heroGraphic {
   flex-shrink: 0;
-  width: 220px;
+  width: 320px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .heroGraphic { display: none; }
 }
 
