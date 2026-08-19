@@ -7,7 +7,6 @@ export type ListingCardData = {
   title: string;
   price: number;
   category: string;
-  city: string;
   imageUrl: string | null;
   sellerId: string;
   status: string;
@@ -46,7 +45,6 @@ export default function ListingCard({
         <div className={styles.body}>
           <p className={styles.price}>{priceFormatter.format(listing.price)} ₸</p>
           <p className={styles.title}>{listing.title}</p>
-          <p className={styles.city}>{listing.city}</p>
         </div>
       </Link>
 

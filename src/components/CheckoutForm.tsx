@@ -2,10 +2,9 @@
 
 import { useActionState } from "react";
 import { createOrderAction } from "@/lib/actions/orders";
-import { CITIES } from "@/lib/constants";
 import styles from "./CheckoutForm.module.css";
 
-export default function CheckoutForm({ defaultCity }: { defaultCity?: string | null }) {
+export default function CheckoutForm() {
   const [state, formAction, pending] = useActionState(createOrderAction, {});
 
   return (
@@ -18,22 +17,8 @@ export default function CheckoutForm({ defaultCity }: { defaultCity?: string | n
       </div>
 
       <div className="field">
-        <label htmlFor="city">Город доставки</label>
-        <select id="city" name="city" defaultValue={defaultCity ?? ""} required>
-          <option value="" disabled>
-            Выберите город
-          </option>
-          {CITIES.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="field">
-        <label htmlFor="address">Адрес</label>
-        <textarea id="address" name="address" placeholder="Улица, дом, квартира" required minLength={5} />
+        <label htmlFor="address">Адрес доставки</label>
+        <textarea id="address" name="address" placeholder="Город, улица, дом, квартира" required minLength={5} />
       </div>
 
       <p className={styles.note}>

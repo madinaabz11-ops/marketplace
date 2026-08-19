@@ -34,10 +34,7 @@ export default async function AccountPage() {
         <div>
           <p className="eyebrow">Личный кабинет</p>
           <h1 className="h1">{user.name}</h1>
-          <p className={styles.meta}>
-            {user.email}
-            {user.city ? ` · ${user.city}` : ""}
-          </p>
+          <p className={styles.meta}>{user.email}</p>
         </div>
 
         <div className={styles.headerActions}>

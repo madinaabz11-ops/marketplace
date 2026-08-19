@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { CATEGORIES, CITIES } from "@/lib/constants";
+import { CATEGORIES } from "@/lib/constants";
 import type { ListingState } from "@/lib/actions/listings";
 import styles from "./ListingForm.module.css";
 
@@ -12,7 +12,6 @@ type InitialValues = {
   description?: string;
   price?: number;
   category?: string;
-  city?: string;
   imageUrl?: string | null;
 };
 
@@ -59,20 +58,6 @@ export default function ListingForm({
             ))}
           </select>
         </div>
-      </div>
-
-      <div className="field">
-        <label htmlFor="city">Город</label>
-        <select id="city" name="city" defaultValue={initial?.city ?? ""} required>
-          <option value="" disabled>
-            Выберите город
-          </option>
-          {CITIES.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
       </div>
 
       <div className="field">

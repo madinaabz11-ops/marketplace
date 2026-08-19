@@ -21,7 +21,6 @@ export async function registerAction(_prevState: AuthState, formData: FormData):
   const email = String(formData.get("email") || "").trim().toLowerCase();
   const password = String(formData.get("password") || "");
   const confirmPassword = String(formData.get("confirmPassword") || "");
-  const city = String(formData.get("city") || "").trim();
 
   if (!name) return { error: "Введите имя" };
   if (!EMAIL_RE.test(email)) return { error: "Введите корректный email" };
@@ -33,7 +32,7 @@ export async function registerAction(_prevState: AuthState, formData: FormData):
 
   const passwordHash = await hashPassword(password);
   const user = await prisma.user.create({
-    data: { name, email, passwordHash, city: city || null },
+    data: { name, email, passwordHash },
   });
 
   const session = await getSession();

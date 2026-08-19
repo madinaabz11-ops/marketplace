@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
-import { CITIES } from "@/lib/constants";
 
 export type CheckoutState = { error?: string };
 
@@ -14,11 +13,9 @@ export async function createOrderAction(_prevState: CheckoutState, formData: For
   const user = await requireUser();
 
   const phone = String(formData.get("phone") || "").trim();
-  const city = String(formData.get("city") || "");
   const address = String(formData.get("address") || "").trim();
 
   if (!PHONE_PATTERN.test(phone)) return { error: "Укажите корректный номер телефона" };
-  if (!CITIES.includes(city as (typeof CITIES)[number])) return { error: "Выберите город доставки" };
   if (!address || address.length < 5) return { error: "Укажите адрес подробнее" };
 
   const cartItems = await prisma.cartItem.findMany({
@@ -36,7 +33,6 @@ export async function createOrderAction(_prevState: CheckoutState, formData: For
     const created = await tx.order.create({
       data: {
         buyerId: user.id,
-        city,
         address,
         phone,
         totalPrice,

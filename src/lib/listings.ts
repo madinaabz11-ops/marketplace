@@ -6,7 +6,6 @@ export type ListingSort = "new" | "old" | "price_asc" | "price_desc";
 export type ListingFilters = {
   q?: string;
   category?: string;
-  city?: string;
   minPrice?: string;
   maxPrice?: string;
   sort?: ListingSort;
@@ -26,7 +25,6 @@ export function buildListingWhere(filters: ListingFilters): Prisma.ListingWhereI
   const where: Prisma.ListingWhereInput = { status: "active" };
 
   if (filters.category) where.category = filters.category;
-  if (filters.city) where.city = filters.city;
 
   const min = filters.minPrice ? Number(filters.minPrice) : undefined;
   const max = filters.maxPrice ? Number(filters.maxPrice) : undefined;
@@ -44,7 +42,7 @@ export async function getListings(filters: ListingFilters) {
   const listings = await prisma.listing.findMany({
     where: buildListingWhere(filters),
     orderBy: SORT_ORDER_BY[filters.sort ?? "new"],
-    include: { seller: { select: { name: true, city: true } } },
+    include: { seller: { select: { name: true } } },
   });
 
   if (!filters.q) return listings;

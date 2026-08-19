@@ -52,9 +52,7 @@ export default async function CartPage() {
                   </div>
                   <div className={styles.itemInfo}>
                     <p className={styles.itemTitle}>{item.listing.title}</p>
-                    <p className={styles.itemSeller}>
-                      {item.listing.seller.name} · {item.listing.city}
-                    </p>
+                    <p className={styles.itemSeller}>{item.listing.seller.name}</p>
                   </div>
                 </Link>
 

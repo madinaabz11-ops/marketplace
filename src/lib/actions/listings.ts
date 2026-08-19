@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/auth";
-import { CATEGORIES, CITIES } from "@/lib/constants";
+import { CATEGORIES } from "@/lib/constants";
 
 export type ListingState = { error?: string };
 
@@ -37,16 +37,14 @@ function readListingFields(formData: FormData) {
   const description = String(formData.get("description") || "").trim();
   const priceRaw = String(formData.get("price") || "");
   const category = String(formData.get("category") || "");
-  const city = String(formData.get("city") || "");
   const price = Number(priceRaw);
 
   if (!title || title.length < 3) return { error: "Название должно быть не короче 3 символов" as const };
   if (!description || description.length < 10) return { error: "Опишите вещь чуть подробнее (от 10 символов)" as const };
   if (!Number.isFinite(price) || price <= 0) return { error: "Укажите цену больше нуля" as const };
   if (!CATEGORIES.includes(category as (typeof CATEGORIES)[number])) return { error: "Выберите категорию" as const };
-  if (!CITIES.includes(city as (typeof CITIES)[number])) return { error: "Выберите город" as const };
 
-  return { title, description, price: Math.round(price), category, city };
+  return { title, description, price: Math.round(price), category };
 }
 
 export async function createListingAction(_prevState: ListingState, formData: FormData): Promise<ListingState> {

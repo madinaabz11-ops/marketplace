@@ -15,7 +15,6 @@ model User {
   name         String
   email        String              @unique
   passwordHash String
-  city         String?
   createdAt    DateTime            @default(now())
   listings     Listing[]
   cartItems    CartItem[]
@@ -38,7 +37,6 @@ model Listing {
   description String
   price       Int
   category    String
-  city        String
   imageUrl    String?
   status      String      @default("active")
   createdAt   DateTime    @default(now())
@@ -49,7 +47,6 @@ model Listing {
   orderItems  OrderItem[]
 
   @@index([category])
-  @@index([city])
   @@index([price])
 }
 
@@ -67,7 +64,6 @@ model CartItem {
 model Order {
   id         String      @id @default(cuid())
   totalPrice Int
-  city       String
   address    String
   phone      String
   createdAt  DateTime    @default(now())

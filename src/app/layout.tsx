@@ -20,7 +20,7 @@ const publicSans = Public_Sans({
 
 export const metadata: Metadata = {
   title: "Wiskons - маркетплейс товаров",
-  description: "Новые товары от разных продавцов в одном месте. Поиск по категориям, цене и городу.",
+  description: "Новые товары от разных продавцов в одном месте. Поиск по категориям и цене.",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {

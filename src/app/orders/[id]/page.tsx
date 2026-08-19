@@ -42,7 +42,6 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
 
       <div className={styles.details}>
         <p className={styles.detailsLabel}>Доставка</p>
-        <p>{order.city}</p>
         <p>{order.address}</p>
         <p>{order.phone}</p>
       </div>

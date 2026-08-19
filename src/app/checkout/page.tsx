@@ -21,7 +21,7 @@ export default async function CheckoutPage() {
       <h1 className={`h1 ${styles.title}`}>Оформление заказа</h1>
 
       <div className={styles.layout}>
-        <CheckoutForm defaultCity={user.city} />
+        <CheckoutForm />
 
         <aside className={styles.summary}>
           <h2 className={styles.summaryTitle}>Ваш заказ</h2>

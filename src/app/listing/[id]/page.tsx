@@ -15,7 +15,7 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
   const [listing, user] = await Promise.all([
     prisma.listing.findUnique({
       where: { id },
-      include: { seller: { select: { id: true, name: true, city: true, createdAt: true } } },
+      include: { seller: { select: { id: true, name: true, createdAt: true } } },
     }),
     getCurrentUser(),
   ]);
@@ -52,7 +52,6 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
         <div className={`${styles.info} fade-in-up`} style={{ animationDelay: "0.1s" }}>
           <div className={styles.tags}>
             <span className={styles.tag}>{listing.category}</span>
-            <span className={styles.tag}>{listing.city}</span>
           </div>
 
           <h1 className={styles.title}>{listing.title}</h1>
@@ -64,7 +63,6 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
             <p className={styles.sellerLabel}>Продавец</p>
             <p className={styles.sellerName}>{listing.seller.name}</p>
             <p className={styles.sellerMeta}>
-              {listing.seller.city ? `${listing.seller.city} · ` : ""}
               на Wiskons с {dateFormatter.format(listing.seller.createdAt)}
             </p>
           </div>

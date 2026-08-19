@@ -1,4 +1,4 @@
-import { CATEGORIES, CITIES } from "@/lib/constants";
+import { CATEGORIES } from "@/lib/constants";
 import type { ListingSort } from "@/lib/listings";
 import styles from "./FilterBar.module.css";
 
@@ -12,14 +12,12 @@ const SORT_LABELS: Record<ListingSort, string> = {
 export default function FilterBar({
   q,
   category,
-  city,
   minPrice,
   maxPrice,
   sort,
 }: {
   q?: string;
   category?: string;
-  city?: string;
   minPrice?: string;
   maxPrice?: string;
   sort?: ListingSort;
@@ -38,15 +36,6 @@ export default function FilterBar({
       <select name="category" defaultValue={category ?? ""} className={styles.select} aria-label="Категория">
         <option value="">Все категории</option>
         {CATEGORIES.map((c) => (
-          <option key={c} value={c}>
-            {c}
-          </option>
-        ))}
-      </select>
-
-      <select name="city" defaultValue={city ?? ""} className={styles.select} aria-label="Город">
-        <option value="">Любой город</option>
-        {CITIES.map((c) => (
           <option key={c} value={c}>
             {c}
           </option>

@@ -3,7 +3,6 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { registerAction, type AuthState } from "@/lib/actions/auth";
-import { CITIES } from "@/lib/constants";
 import styles from "../auth.module.css";
 
 const initialState: AuthState = {};
@@ -28,18 +27,6 @@ export default function RegisterPage() {
         <div className="field">
           <label htmlFor="email">Email</label>
           <input id="email" name="email" type="email" autoComplete="email" required />
-        </div>
-
-        <div className="field">
-          <label htmlFor="city">Город (необязательно)</label>
-          <select id="city" name="city" defaultValue="">
-            <option value="">Не выбран</option>
-            {CITIES.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
         </div>
 
         <div className="field-row">

@@ -14,7 +14,6 @@ export default async function Home({
   const sp = await searchParams;
   const q = typeof sp.q === "string" ? sp.q : undefined;
   const category = typeof sp.category === "string" ? sp.category : undefined;
-  const city = typeof sp.city === "string" ? sp.city : undefined;
   const minPrice = typeof sp.minPrice === "string" ? sp.minPrice : undefined;
   const maxPrice = typeof sp.maxPrice === "string" ? sp.maxPrice : undefined;
   const sortOptions: ListingSort[] = ["new", "old", "price_asc", "price_desc"];
@@ -22,10 +21,10 @@ export default async function Home({
 
   const user = await getCurrentUser();
   const [listings, cartListingIds] = await Promise.all([
-    getListings({ q, category, city, minPrice, maxPrice, sort }),
+    getListings({ q, category, minPrice, maxPrice, sort }),
     getCartListingIds(user?.id),
   ]);
-  const hasFilters = Boolean(q || category || city || minPrice || maxPrice);
+  const hasFilters = Boolean(q || category || minPrice || maxPrice);
 
   return (
     <>
@@ -37,7 +36,7 @@ export default async function Home({
               Маркетплейс <span className={styles.heroAccent}>товаров</span>
             </h1>
             <p className={styles.heroText}>
-              Новые товары от разных продавцов в одном месте - выбирайте по категории, цене и городу.
+              Новые товары от разных продавцов в одном месте - выбирайте по категории и цене.
             </p>
           </div>
           <div className={`${styles.heroGraphic} fade-in-up`} style={{ animationDelay: "0.15s" }}>
@@ -47,7 +46,7 @@ export default async function Home({
       </section>
 
       <section id="listings" className={`wrap ${styles.listings}`}>
-        <FilterBar q={q} category={category} city={city} minPrice={minPrice} maxPrice={maxPrice} sort={sort} />
+        <FilterBar q={q} category={category} minPrice={minPrice} maxPrice={maxPrice} sort={sort} />
 
         <div className={styles.resultsHead}>
           <h2 className="h2">{hasFilters ? "Результаты поиска" : "Свежие объявления"}</h2>
