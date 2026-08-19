@@ -126,9 +126,8 @@
 }
 
 .brandMark {
-  width: 30px;
-  height: 30px;
-  color: var(--accent);
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
 }
 
@@ -141,8 +140,8 @@
 .brandName {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.3rem;
-  letter-spacing: -0.01em;
+  font-size: 1.36rem;
+  letter-spacing: -0.02em;
   color: var(--ink);
 }
 
