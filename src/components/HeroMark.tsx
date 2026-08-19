@@ -64,14 +64,6 @@ const ICONS: { path: ReactNode; className: string }[] = [
 export default function HeroMark() {
   return (
     <div className={styles.panel}>
-      <span className={`${styles.blob} ${styles.blobA}`} />
-      <span className={`${styles.blob} ${styles.blobB}`} />
-      <span className={styles.dotGrid} aria-hidden="true">
-        {Array.from({ length: 24 }).map((_, i) => (
-          <span key={i} />
-        ))}
-      </span>
-
       {ICONS.map((icon, i) => (
         <svg
           key={i}
