@@ -33,11 +33,8 @@ export default function Header({
         <Link href="/" className={styles.brand}>
           <span className={styles.brandMark} aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
-              <path d="M16 5 4 16h12z" fill="var(--accent-deep)" />
-              <path d="M16 5 12 16h8z" fill="var(--lime)" />
-              <path d="M16 5 20 16h8z" fill="var(--accent-deep)" />
-              <circle cx="16" cy="4" r="1.4" fill="var(--lime)" />
-              <rect x="10" y="16" width="12" height="9" rx="1" fill="var(--ink)" />
+              <path d="M4 7 10 25 16 13" stroke="var(--accent-deep)" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M16 13 22 25 28 7" stroke="var(--lime)" strokeWidth="4.4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
           <span className={styles.brandText}>
