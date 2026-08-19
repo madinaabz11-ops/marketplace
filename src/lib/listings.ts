@@ -1,12 +1,22 @@
 import { prisma } from "@/lib/prisma";
 import type { Prisma } from "@/generated/prisma/client";
 
+export type ListingSort = "new" | "old" | "price_asc" | "price_desc";
+
 export type ListingFilters = {
   q?: string;
   category?: string;
   city?: string;
   minPrice?: string;
   maxPrice?: string;
+  sort?: ListingSort;
+};
+
+const SORT_ORDER_BY: Record<ListingSort, Prisma.ListingOrderByWithRelationInput> = {
+  new: { createdAt: "desc" },
+  old: { createdAt: "asc" },
+  price_asc: { price: "asc" },
+  price_desc: { price: "desc" },
 };
 
 // SQLite's LIKE (what Prisma's `contains` compiles to) only case-folds ASCII,
@@ -33,7 +43,7 @@ export function buildListingWhere(filters: ListingFilters): Prisma.ListingWhereI
 export async function getListings(filters: ListingFilters) {
   const listings = await prisma.listing.findMany({
     where: buildListingWhere(filters),
-    orderBy: { createdAt: "desc" },
+    orderBy: SORT_ORDER_BY[filters.sort ?? "new"],
     include: { seller: { select: { name: true, city: true } } },
   });
 

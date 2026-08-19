@@ -1,4 +1,4 @@
-import { getListings } from "@/lib/listings";
+import { getListings, type ListingSort } from "@/lib/listings";
 import { getCurrentUser } from "@/lib/auth";
 import { getCartListingIds } from "@/lib/cart";
 import FilterBar from "@/components/FilterBar";
@@ -17,10 +17,12 @@ export default async function Home({
   const city = typeof sp.city === "string" ? sp.city : undefined;
   const minPrice = typeof sp.minPrice === "string" ? sp.minPrice : undefined;
   const maxPrice = typeof sp.maxPrice === "string" ? sp.maxPrice : undefined;
+  const sortOptions: ListingSort[] = ["new", "old", "price_asc", "price_desc"];
+  const sort = sortOptions.includes(sp.sort as ListingSort) ? (sp.sort as ListingSort) : undefined;
 
   const user = await getCurrentUser();
   const [listings, cartListingIds] = await Promise.all([
-    getListings({ q, category, city, minPrice, maxPrice }),
+    getListings({ q, category, city, minPrice, maxPrice, sort }),
     getCartListingIds(user?.id),
   ]);
   const hasFilters = Boolean(q || category || city || minPrice || maxPrice);
@@ -45,7 +47,7 @@ export default async function Home({
       </section>
 
       <section id="listings" className={`wrap ${styles.listings}`}>
-        <FilterBar q={q} category={category} city={city} minPrice={minPrice} maxPrice={maxPrice} />
+        <FilterBar q={q} category={category} city={city} minPrice={minPrice} maxPrice={maxPrice} sort={sort} />
 
         <div className={styles.resultsHead}>
           <h2 className="h2">{hasFilters ? "Результаты поиска" : "Свежие объявления"}</h2>

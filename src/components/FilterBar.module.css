@@ -1,7 +1,7 @@
 .bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   align-items: center;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -11,7 +11,7 @@
 }
 
 .search {
-  flex: 2 1 220px;
+  flex: 2 1 200px;
   height: 50px;
   padding: 0 14px;
   border: 1px solid var(--line);
@@ -21,7 +21,7 @@
 }
 
 .select {
-  flex: 1 1 160px;
+  flex: 1 1 140px;
   height: 50px;
   padding: 0 38px 0 14px;
   border: 1px solid var(--line);
@@ -39,7 +39,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  flex: 1 1 220px;
+  flex: 1 1 200px;
 }
 
 .priceInput {

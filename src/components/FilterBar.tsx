@@ -1,5 +1,13 @@
 import { CATEGORIES, CITIES } from "@/lib/constants";
+import type { ListingSort } from "@/lib/listings";
 import styles from "./FilterBar.module.css";
+
+const SORT_LABELS: Record<ListingSort, string> = {
+  new: "Сначала новые",
+  old: "Сначала старые",
+  price_asc: "Сначала дешёвые",
+  price_desc: "Сначала дорогие",
+};
 
 export default function FilterBar({
   q,
@@ -7,12 +15,14 @@ export default function FilterBar({
   city,
   minPrice,
   maxPrice,
+  sort,
 }: {
   q?: string;
   category?: string;
   city?: string;
   minPrice?: string;
   maxPrice?: string;
+  sort?: ListingSort;
 }) {
   return (
     <form action="/" method="GET" className={`${styles.bar} fade-in-up`} style={{ animationDelay: "0.1s" }}>
@@ -64,6 +74,14 @@ export default function FilterBar({
           aria-label="Цена до"
         />
       </div>
+
+      <select name="sort" defaultValue={sort ?? "new"} className={styles.select} aria-label="Сортировка">
+        {(Object.keys(SORT_LABELS) as ListingSort[]).map((value) => (
+          <option key={value} value={value}>
+            {SORT_LABELS[value]}
+          </option>
+        ))}
+      </select>
 
       <button type="submit" className="btn btn--primary">
         Найти
