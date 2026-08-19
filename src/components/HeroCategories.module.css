@@ -19,43 +19,51 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
+  gap: 8px;
 }
 
 .tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
-  padding: 10px 4px 12px;
+  position: relative;
+  aspect-ratio: 1;
   border-radius: var(--radius);
-  color: var(--ink);
-  transition: background 0.2s var(--ease);
+  overflow: hidden;
+  background: var(--accent-deep);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
-.tile:hover { background: var(--bg-deep); }
-
-.badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent-pale);
-  color: var(--accent-deep);
-  transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
-.badge svg { width: 20px; height: 20px; }
 
-.tile:hover .badge {
-  background: var(--lime);
-  color: #10120a;
-  transform: translateY(-2px);
+.tileFlat { background: var(--ink); }
+
+.tileImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82) saturate(1.05);
+  transition: transform 0.4s var(--ease), filter 0.4s var(--ease);
+}
+.tile:hover .tileImage {
+  transform: scale(1.1);
+  filter: brightness(0.7) saturate(1.1);
+}
+
+.tileShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(23, 23, 23, 0) 35%, rgba(10, 10, 10, 0.82) 100%);
 }
 
 .tileLabel {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 7px;
+  color: #fff;
   font-size: 0.68rem;
-  line-height: 1.25;
-  color: var(--ink-soft);
+  font-weight: 700;
+  line-height: 1.2;
 }
