@@ -50,6 +50,30 @@ export default function Header({
           <span></span>
         </label>
 
+        <form action="/" method="GET" className={styles.searchForm}>
+          <select name="category" className={styles.searchCategory} aria-label="Категория" defaultValue="">
+            <option value="">Все категории</option>
+            {CATEGORIES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+          <input
+            type="text"
+            name="q"
+            placeholder="Поиск товаров..."
+            className={styles.searchInput}
+            aria-label="Поиск товаров"
+          />
+          <button type="submit" className={styles.searchBtn} aria-label="Найти">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+              <path d="m20 20-3.5-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>
+        </form>
+
         <nav className={styles.nav} aria-label="Основная навигация">
           <Link href="/#listings">Все объявления</Link>
           {user ? (
@@ -95,32 +119,6 @@ export default function Header({
             </>
           )}
         </nav>
-      </div>
-
-      <div className={`wrap ${styles.searchRow}`}>
-        <form action="/" method="GET" className={styles.searchForm}>
-          <select name="category" className={styles.searchCategory} aria-label="Категория" defaultValue="">
-            <option value="">Все категории</option>
-            {CATEGORIES.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-          <input
-            type="text"
-            name="q"
-            placeholder="Поиск товаров..."
-            className={styles.searchInput}
-            aria-label="Поиск товаров"
-          />
-          <button type="submit" className={styles.searchBtn} aria-label="Найти">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
-              <path d="m20 20-3.5-3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </button>
-        </form>
       </div>
 
       <div className={styles.categoryRow}>
