@@ -4,7 +4,7 @@ import { getCartListingIds } from "@/lib/cart";
 import { getFavoriteListingIds } from "@/lib/favorites";
 import FilterBar from "@/components/FilterBar";
 import ListingCard from "@/components/ListingCard";
-import HeroPhotos from "@/components/HeroPhotos";
+import HeroMark from "@/components/HeroMark";
 import styles from "./page.module.css";
 
 export default async function Home({
@@ -47,7 +47,7 @@ export default async function Home({
             <p className={styles.heroTagline}>маркетплейс товаров</p>
           </div>
           <div className={`${styles.heroGraphic} fade-in-up`} style={{ animationDelay: "0.15s" }}>
-            <HeroPhotos />
+            <HeroMark />
           </div>
         </div>
       </section>
