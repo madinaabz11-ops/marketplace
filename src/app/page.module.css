@@ -1,28 +1,28 @@
 .hero {
   background: var(--bg-deep);
   border-bottom: 1px solid var(--line-soft);
-  padding: 40px 0 34px;
+  padding: 52px 0;
   margin-bottom: 32px;
   overflow: hidden;
 }
 
 .heroInner {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .heroWordmark {
   display: inline-flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .heroName {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(3rem, 8vw, 5.4rem);
+  font-size: clamp(3rem, 7vw, 5rem);
   letter-spacing: -0.035em;
   line-height: 1;
   background: linear-gradient(120deg, var(--ink) 45%, var(--accent) 100%);
@@ -32,18 +32,26 @@
 }
 
 .heroSquiggle {
-  width: 44%;
+  width: 52%;
   height: auto;
-  margin: 4px 0 0;
+  margin: 4px 0 0 3px;
 }
 
 .heroTagline {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent-deep);
+}
+
+.heroGraphic {
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .heroGraphic { display: none; }
 }
 
 .listings {

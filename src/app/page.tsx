@@ -4,6 +4,7 @@ import { getCartListingIds } from "@/lib/cart";
 import { getFavoriteListingIds } from "@/lib/favorites";
 import FilterBar from "@/components/FilterBar";
 import ListingCard from "@/components/ListingCard";
+import HeroPhotos from "@/components/HeroPhotos";
 import styles from "./page.module.css";
 
 export default async function Home({
@@ -30,19 +31,24 @@ export default async function Home({
   return (
     <>
       <section className={styles.hero}>
-        <div className={`wrap ${styles.heroInner} fade-in-up`}>
-          <div className={styles.heroWordmark}>
-            <h1 className={styles.heroName}>Wiskons</h1>
-            <svg className={styles.heroSquiggle} viewBox="0 0 180 16" fill="none" aria-hidden="true">
-              <path
-                d="M2 9c15-11 27-11 42 0s27 11 42 0 27-11 42 0 27 11 40 1"
-                stroke="var(--lime)"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-            </svg>
+        <div className={`wrap ${styles.heroInner}`}>
+          <div className="fade-in-up">
+            <div className={styles.heroWordmark}>
+              <h1 className={styles.heroName}>Wiskons</h1>
+              <svg className={styles.heroSquiggle} viewBox="0 0 180 16" fill="none" aria-hidden="true">
+                <path
+                  d="M2 9c15-11 27-11 42 0s27 11 42 0 27-11 42 0 27 11 40 1"
+                  stroke="var(--lime)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+            <p className={styles.heroTagline}>маркетплейс товаров</p>
           </div>
-          <p className={styles.heroTagline}>маркетплейс товаров</p>
+          <div className={`${styles.heroGraphic} fade-in-up`} style={{ animationDelay: "0.15s" }}>
+            <HeroPhotos />
+          </div>
         </div>
       </section>
 
