@@ -1,5 +1,80 @@
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  height: 300px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--lime);
+  filter: blur(2px);
+}
+
+.blobA {
+  width: 220px;
+  height: 220px;
+  top: -90px;
+  right: -70px;
+  opacity: 0.28;
+}
+
+.blobB {
+  width: 140px;
+  height: 140px;
+  bottom: -60px;
+  left: -50px;
+  background: #fff;
+  opacity: 0.12;
+}
+
+.dotGrid {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+.dotGrid span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.35;
+}
+
 .mark {
-  width: 340px;
-  height: auto;
-  max-width: 100%;
+  position: relative;
+  width: 168px;
+  height: 168px;
+  z-index: 2;
+}
+
+.ring {
+  position: absolute;
+  bottom: 34px;
+  right: 46px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2.5px solid var(--lime);
+  opacity: 0.85;
+}
+
+.plus {
+  position: absolute;
+  top: 34px;
+  right: 54px;
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
 }
