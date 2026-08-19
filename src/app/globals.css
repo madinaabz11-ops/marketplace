@@ -3,21 +3,21 @@
    ========================================================= */
 
 :root {
-  --bg:          #0e0e12;
-  --bg-deep:     #17171c;
-  --surface:     #1b1b21;
-  --ink:         #f4f4f0;
-  --ink-soft:    #b7b7c0;
-  --ink-faint:   #7e7e89;
-  --line:        #38383f;
-  --line-soft:   #2a2a30;
+  --bg:          #f7f6f2;
+  --bg-deep:     #efede7;
+  --surface:     #ffffff;
+  --ink:         #171717;
+  --ink-soft:    #8c8b89;
+  --ink-faint:   #afafac;
+  --line:        #e7e5df;
+  --line-soft:   #efeee9;
 
-  --accent:      #8b5cf6;
-  --accent-deep: #a97dff;
-  --accent-pale: #251d3d;
+  --accent:      #176b5b;
+  --accent-deep: #125447;
+  --accent-pale: #dce5e0;
 
-  --lime:        #a3c451;
-  --lime-deep:   #87a33f;
+  --lime:        #f2b84b;
+  --lime-deep:   #c2933c;
 
   --danger:      #ff5c4d;
   --danger-deep: #ff8177;
@@ -29,9 +29,9 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --radius: 3px;
 
-  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 18px 40px -14px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 30px 64px -18px rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 2px 10px rgba(23, 23, 23, 0.08);
+  --shadow-md: 0 18px 40px -14px rgba(23, 23, 23, 0.14);
+  --shadow-lg: 0 30px 64px -18px rgba(23, 23, 23, 0.18);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -115,12 +115,12 @@ main { flex: 1; }
 .btn--primary {
   background: var(--lime);
   color: #10120a;
-  box-shadow: 0 0 0 rgba(198, 240, 0, 0);
+  box-shadow: 0 0 0 rgba(242, 184, 75, 0);
 }
 .btn--primary:hover {
   background: var(--lime-deep);
   transform: translateY(-1px);
-  box-shadow: 0 8px 28px -6px rgba(198, 240, 0, 0.45);
+  box-shadow: 0 8px 28px -6px rgba(242, 184, 75, 0.45);
 }
 
 .btn--secondary {
@@ -185,7 +185,7 @@ main { flex: 1; }
 .field select {
   appearance: none;
   padding-right: 38px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23a3c451' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23f2b84b' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
 }
