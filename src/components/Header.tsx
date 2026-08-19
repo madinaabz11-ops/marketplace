@@ -122,6 +122,27 @@ export default function Header({
           </button>
         </form>
       </div>
+
+      <div className={styles.categoryRow}>
+        <div className={`wrap ${styles.categoryRowInner}`}>
+          <Link href="/" className={styles.categoriesBtn}>
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <rect x="2.5" y="2.5" width="6" height="6" rx="1" fill="currentColor" />
+              <rect x="11.5" y="2.5" width="6" height="6" rx="1" fill="currentColor" />
+              <rect x="2.5" y="11.5" width="6" height="6" rx="1" fill="currentColor" />
+              <rect x="11.5" y="11.5" width="6" height="6" rx="1" fill="currentColor" />
+            </svg>
+            Категории
+          </Link>
+          <nav className={styles.categoryList} aria-label="Категории товаров">
+            {CATEGORIES.map((c) => (
+              <Link key={c} href={`/?category=${encodeURIComponent(c)}#listings`}>
+                {c}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </div>
     </header>
   );
 }
