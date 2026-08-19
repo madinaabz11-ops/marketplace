@@ -1,4 +1,65 @@
+import type { ReactNode } from "react";
 import styles from "./HeroMark.module.css";
+
+const ICONS: { path: ReactNode; className: string }[] = [
+  {
+    className: styles.i1,
+    path: (
+      <>
+        <rect x="6" y="2" width="12" height="20" rx="2.4" />
+        <path d="M10 18h4" strokeLinecap="round" />
+      </>
+    ),
+  },
+  {
+    className: styles.i2,
+    path: (
+      <>
+        <path d="M3 12V4h9l9 9-9 9-9-9z" strokeLinejoin="round" />
+        <circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none" />
+      </>
+    ),
+  },
+  {
+    className: styles.i3,
+    path: (
+      <>
+        <path
+          d="M9 3H7L4.5 5.5 6 8v13h12V8l1.5-2.5L17 3h-2"
+          strokeLinejoin="round"
+        />
+        <path d="M9 3a3 3 0 0 0 6 0" />
+      </>
+    ),
+  },
+  {
+    className: styles.i4,
+    path: (
+      <>
+        <path d="M6 4v9M18 4v9M6 9h12" strokeLinecap="round" />
+        <path d="M5 21l1-8M19 21l-1-8" strokeLinecap="round" />
+      </>
+    ),
+  },
+  {
+    className: styles.i5,
+    path: (
+      <>
+        <path d="M4 5h7v14H4zM13 5h7v14h-7z" strokeLinejoin="round" />
+      </>
+    ),
+  },
+  {
+    className: styles.i6,
+    path: (
+      <>
+        <circle cx="7.5" cy="18" r="2.5" />
+        <path d="M10 18V5l9-2v11" strokeLinecap="round" />
+        <circle cx="17" cy="14" r="2.5" />
+      </>
+    ),
+  },
+];
 
 export default function HeroMark() {
   return (
@@ -11,29 +72,19 @@ export default function HeroMark() {
         ))}
       </span>
 
-      <svg className={styles.mark} viewBox="0 0 200 200" fill="none" aria-hidden="true">
-        <g transform="rotate(-5 100 106)">
-          <path
-            d="M52 93 100 51l48 42v68H52z"
-            fill="var(--lime)"
-            filter="url(#markShadow)"
-          />
-          <path d="M52 93 100 51l48 42" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          <rect x="86" y="123" width="28" height="38" fill="var(--accent-deep)" />
-        </g>
-        <defs>
-          <filter id="markShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="var(--accent-deep)" floodOpacity="0.35" />
-          </filter>
-        </defs>
-      </svg>
-
-      <span className={styles.ring} />
-      <span className={styles.plus} aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 4v16M4 12h16" stroke="#fff" strokeWidth="3" strokeLinecap="round" />
+      {ICONS.map((icon, i) => (
+        <svg
+          key={i}
+          className={`${styles.icon} ${icon.className}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          aria-hidden="true"
+        >
+          {icon.path}
         </svg>
-      </span>
+      ))}
     </div>
   );
 }

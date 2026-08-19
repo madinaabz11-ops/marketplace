@@ -52,29 +52,64 @@
   opacity: 0.35;
 }
 
-.mark {
-  position: relative;
-  width: 168px;
-  height: 168px;
+.icon {
+  position: absolute;
   z-index: 2;
+  color: #fff;
 }
 
-.ring {
-  position: absolute;
-  bottom: 34px;
-  right: 46px;
+.i1 {
   width: 46px;
   height: 46px;
-  border-radius: 50%;
-  border: 2.5px solid var(--lime);
+  top: 34px;
+  left: 46px;
+  transform: rotate(-12deg);
+  color: var(--lime);
+  opacity: 0.95;
+}
+
+.i2 {
+  width: 38px;
+  height: 38px;
+  top: 44px;
+  right: 64px;
+  transform: rotate(9deg);
+  opacity: 0.9;
+}
+
+.i3 {
+  width: 42px;
+  height: 42px;
+  bottom: 40px;
+  right: 40px;
+  transform: rotate(-8deg);
+  color: var(--lime);
+  opacity: 0.9;
+}
+
+.i4 {
+  width: 34px;
+  height: 34px;
+  bottom: 52px;
+  left: 88px;
+  transform: rotate(14deg);
   opacity: 0.85;
 }
 
-.plus {
-  position: absolute;
-  top: 34px;
-  right: 54px;
-  width: 22px;
-  height: 22px;
-  opacity: 0.85;
+.i5 {
+  width: 30px;
+  height: 30px;
+  top: 96px;
+  left: 30px;
+  transform: rotate(20deg);
+  opacity: 0.7;
+}
+
+.i6 {
+  width: 40px;
+  height: 40px;
+  top: 108px;
+  right: 108px;
+  transform: rotate(-16deg);
+  opacity: 0.8;
 }
