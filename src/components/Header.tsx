@@ -10,7 +10,15 @@ type User = {
   name: string;
 } | null;
 
-export default function Header({ user, cartCount = 0 }: { user: User; cartCount?: number }) {
+export default function Header({
+  user,
+  cartCount = 0,
+  favoritesCount = 0,
+}: {
+  user: User;
+  cartCount?: number;
+  favoritesCount?: number;
+}) {
   const pathname = usePathname();
   const menuToggleRef = useRef<HTMLInputElement>(null);
 
@@ -47,6 +55,17 @@ export default function Header({ user, cartCount = 0 }: { user: User; cartCount?
             <>
               <Link href="/account/new" className={styles.postLink}>
                 + Разместить
+              </Link>
+              <Link href="/favorites" className={styles.cartLink} aria-label="Избранное">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path
+                    d="M12 20.5s-7.5-4.6-9.8-9.3C.7 7.9 2.2 4.5 5.6 3.7c2-.5 4 .3 5.2 2.1a.9.9 0 0 0 1.4 0c1.2-1.8 3.2-2.6 5.2-2.1 3.4.8 4.9 4.2 3.4 7.5-2.3 4.7-9.8 9.3-9.8 9.3z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                {favoritesCount > 0 && <span className={styles.cartBadge}>{favoritesCount}</span>}
               </Link>
               <Link href="/cart" className={styles.cartLink} aria-label="Корзина">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">

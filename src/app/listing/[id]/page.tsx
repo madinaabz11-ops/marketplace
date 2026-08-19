@@ -4,10 +4,24 @@ import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
 import { deleteListingAction, toggleSoldAction } from "@/lib/actions/listings";
 import { addToCartAction, removeFromCartAction } from "@/lib/actions/cart";
+import { addToFavoritesAction, removeFromFavoritesAction } from "@/lib/actions/favorites";
 import styles from "./page.module.css";
 
 const priceFormatter = new Intl.NumberFormat("ru-KZ");
 const dateFormatter = new Intl.DateTimeFormat("ru-RU", { day: "numeric", month: "long" });
+
+function FavoriteIcon({ filled }: { filled: boolean }) {
+  return (
+    <svg viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} aria-hidden="true">
+      <path
+        d="M12 20.5s-7.5-4.6-9.8-9.3C.7 7.9 2.2 4.5 5.6 3.7c2-.5 4 .3 5.2 2.1a.9.9 0 0 0 1.4 0c1.2-1.8 3.2-2.6 5.2-2.1 3.4.8 4.9 4.2 3.4 7.5-2.3 4.7-9.8 9.3-9.8 9.3z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default async function ListingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -24,12 +38,18 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
 
   const isOwner = user?.id === listing.sellerId;
 
-  const cartItem = user && !isOwner
-    ? await prisma.cartItem.findUnique({
-        where: { userId_listingId: { userId: user.id, listingId: listing.id } },
-      })
-    : null;
+  const [cartItem, favorite] = user && !isOwner
+    ? await Promise.all([
+        prisma.cartItem.findUnique({
+          where: { userId_listingId: { userId: user.id, listingId: listing.id } },
+        }),
+        prisma.favorite.findUnique({
+          where: { userId_listingId: { userId: user.id, listingId: listing.id } },
+        }),
+      ])
+    : [null, null];
   const inCart = Boolean(cartItem);
+  const isFavorite = Boolean(favorite);
 
   return (
     <section className="wrap">
@@ -84,7 +104,20 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
               </form>
             </div>
           ) : listing.status === "sold" ? (
-            <div className={styles.contactNote}>Этот товар уже продан.</div>
+            <>
+              <div className={styles.buyerActions}>
+                <form action={(isFavorite ? removeFromFavoritesAction : addToFavoritesAction).bind(null, listing.id)}>
+                  <button
+                    type="submit"
+                    className={`btn btn--ghost ${styles.favBtn} ${isFavorite ? styles.favBtnActive : ""}`}
+                  >
+                    <FavoriteIcon filled={isFavorite} />
+                    {isFavorite ? "В избранном" : "В избранное"}
+                  </button>
+                </form>
+              </div>
+              <div className={styles.contactNote}>Этот товар уже продан.</div>
+            </>
           ) : user ? (
             <>
               <div className={styles.buyerActions}>
@@ -98,6 +131,15 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
                     Перейти в корзину
                   </Link>
                 )}
+                <form action={(isFavorite ? removeFromFavoritesAction : addToFavoritesAction).bind(null, listing.id)}>
+                  <button
+                    type="submit"
+                    className={`btn btn--ghost ${styles.favBtn} ${isFavorite ? styles.favBtnActive : ""}`}
+                  >
+                    <FavoriteIcon filled={isFavorite} />
+                    {isFavorite ? "В избранном" : "В избранное"}
+                  </button>
+                </form>
               </div>
               <div className={styles.contactNote}>
                 Чтобы связаться с продавцом, посмотрите его профиль - раздел с сообщениями пока в разработке.

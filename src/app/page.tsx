@@ -1,6 +1,7 @@
 import { getListings, type ListingSort } from "@/lib/listings";
 import { getCurrentUser } from "@/lib/auth";
 import { getCartListingIds } from "@/lib/cart";
+import { getFavoriteListingIds } from "@/lib/favorites";
 import FilterBar from "@/components/FilterBar";
 import ListingCard from "@/components/ListingCard";
 import HeroGraphic from "@/components/HeroGraphic";
@@ -20,9 +21,10 @@ export default async function Home({
   const sort = sortOptions.includes(sp.sort as ListingSort) ? (sp.sort as ListingSort) : undefined;
 
   const user = await getCurrentUser();
-  const [listings, cartListingIds] = await Promise.all([
+  const [listings, cartListingIds, favoriteListingIds] = await Promise.all([
     getListings({ q, category, minPrice, maxPrice, sort }),
     getCartListingIds(user?.id),
+    getFavoriteListingIds(user?.id),
   ]);
   const hasFilters = Boolean(q || category || minPrice || maxPrice);
 
@@ -61,7 +63,12 @@ export default async function Home({
           <div className={styles.grid}>
             {listings.map((listing, i) => (
               <div key={listing.id} className="fade-in-up" style={{ animationDelay: `${Math.min(i, 10) * 0.05}s` }}>
-                <ListingCard listing={listing} currentUserId={user?.id} inCart={cartListingIds.has(listing.id)} />
+                <ListingCard
+                  listing={listing}
+                  currentUserId={user?.id}
+                  inCart={cartListingIds.has(listing.id)}
+                  isFavorite={favoriteListingIds.has(listing.id)}
+                />
               </div>
             ))}
           </div>

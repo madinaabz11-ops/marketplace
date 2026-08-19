@@ -18,6 +18,7 @@ model User {
   createdAt    DateTime            @default(now())
   listings     Listing[]
   cartItems    CartItem[]
+  favorites    Favorite[]
   orders       Order[]
   resetTokens  PasswordResetToken[]
 }
@@ -44,6 +45,7 @@ model Listing {
   seller      User        @relation(fields: [sellerId], references: [id], onDelete: Cascade)
   sellerId    String
   cartItems   CartItem[]
+  favorites   Favorite[]
   orderItems  OrderItem[]
 
   @@index([category])
@@ -51,6 +53,17 @@ model Listing {
 }
 
 model CartItem {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listingId String
+
+  @@unique([userId, listingId])
+}
+
+model Favorite {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)

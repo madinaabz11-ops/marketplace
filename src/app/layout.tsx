@@ -3,6 +3,7 @@ import { Space_Grotesk, Public_Sans } from "next/font/google";
 import "./globals.css";
 import { getCurrentUser } from "@/lib/auth";
 import { getCartCount } from "@/lib/cart";
+import { getFavoritesCount } from "@/lib/favorites";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -25,12 +26,15 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const user = await getCurrentUser();
-  const cartCount = await getCartCount(user?.id);
+  const [cartCount, favoritesCount] = await Promise.all([
+    getCartCount(user?.id),
+    getFavoritesCount(user?.id),
+  ]);
 
   return (
     <html lang="ru" className={`${spaceGrotesk.variable} ${publicSans.variable}`}>
       <body>
-        <Header user={user} cartCount={cartCount} />
+        <Header user={user} cartCount={cartCount} favoritesCount={favoritesCount} />
         {children}
         <Footer user={user} />
       </body>

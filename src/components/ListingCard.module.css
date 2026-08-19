@@ -121,3 +121,46 @@
   border-color: var(--lime-deep);
   color: #10120a;
 }
+
+.favForm {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.favBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.favBtn:hover { box-shadow: var(--shadow-md); }
+
+.favBtn svg { width: 18px; height: 18px; }
+
+.favBtn:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.favBtnActive {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+.favBtnActive:hover {
+  background: var(--danger-deep);
+  border-color: var(--danger-deep);
+  color: #fff;
+}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { addToCartAction, removeFromCartAction } from "@/lib/actions/cart";
+import { addToFavoritesAction, removeFromFavoritesAction } from "@/lib/actions/favorites";
 import styles from "./ListingCard.module.css";
 
 export type ListingCardData = {
@@ -18,15 +19,41 @@ export default function ListingCard({
   listing,
   currentUserId,
   inCart,
+  isFavorite,
 }: {
   listing: ListingCardData;
   currentUserId?: string;
   inCart?: boolean;
+  isFavorite?: boolean;
 }) {
   const canAddToCart = Boolean(currentUserId) && currentUserId !== listing.sellerId && listing.status === "active";
+  const canFavorite = Boolean(currentUserId) && currentUserId !== listing.sellerId;
 
   return (
     <div className={styles.card}>
+      {canFavorite && (
+        <form
+          action={(isFavorite ? removeFromFavoritesAction : addToFavoritesAction).bind(null, listing.id)}
+          className={styles.favForm}
+        >
+          <button
+            type="submit"
+            className={`${styles.favBtn} ${isFavorite ? styles.favBtnActive : ""}`}
+            aria-label={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
+            title={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
+          >
+            <svg viewBox="0 0 24 24" fill={isFavorite ? "currentColor" : "none"} aria-hidden="true">
+              <path
+                d="M12 20.5s-7.5-4.6-9.8-9.3C.7 7.9 2.2 4.5 5.6 3.7c2-.5 4 .3 5.2 2.1a.9.9 0 0 0 1.4 0c1.2-1.8 3.2-2.6 5.2-2.1 3.4.8 4.9 4.2 3.4 7.5-2.3 4.7-9.8 9.3-9.8 9.3z"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </form>
+      )}
+
       <Link href={`/listing/${listing.id}`} className={styles.cardLink}>
         <div className={styles.imageWrap}>
           {listing.imageUrl ? (

@@ -100,6 +100,13 @@
 
 .deleteBtn:hover { border-color: var(--danger); color: var(--danger-deep); }
 
+.favBtn { display: inline-flex; align-items: center; gap: 8px; }
+.favBtn svg { width: 18px; height: 18px; }
+.favBtn:hover { border-color: var(--danger); color: var(--danger); }
+
+.favBtnActive { border-color: var(--danger); color: var(--danger); }
+.favBtnActive:hover { border-color: var(--danger-deep); color: var(--danger-deep); }
+
 .contactNote {
   font-size: 0.88rem;
   color: var(--ink-faint);
