@@ -1,10 +1,10 @@
-import { getListings, type ListingSort } from "@/lib/listings";
+import { getListings, getFeaturedListings, type ListingSort } from "@/lib/listings";
 import { getCurrentUser } from "@/lib/auth";
 import { getCartListingIds } from "@/lib/cart";
 import { getFavoriteListingIds } from "@/lib/favorites";
 import FilterBar from "@/components/FilterBar";
 import ListingCard from "@/components/ListingCard";
-import HeroGraphic from "@/components/HeroGraphic";
+import HeroCatalog from "@/components/HeroCatalog";
 import styles from "./page.module.css";
 
 export default async function Home({
@@ -21,10 +21,11 @@ export default async function Home({
   const sort = sortOptions.includes(sp.sort as ListingSort) ? (sp.sort as ListingSort) : undefined;
 
   const user = await getCurrentUser();
-  const [listings, cartListingIds, favoriteListingIds] = await Promise.all([
+  const [listings, cartListingIds, favoriteListingIds, featuredListings] = await Promise.all([
     getListings({ q, category, minPrice, maxPrice, sort }),
     getCartListingIds(user?.id),
     getFavoriteListingIds(user?.id),
+    getFeaturedListings(4),
   ]);
   const hasFilters = Boolean(q || category || minPrice || maxPrice);
 
@@ -33,14 +34,24 @@ export default async function Home({
       <section className={styles.hero}>
         <div className={`wrap ${styles.heroInner}`}>
           <div className="fade-in-up">
-            <h1 className={styles.heroName}>Wiskons</h1>
-            <p className={styles.heroTagline}>Маркетплейс товаров</p>
+            <div className={styles.heroWordmark}>
+              <h1 className={styles.heroName}>Wiskons</h1>
+              <svg className={styles.heroSquiggle} viewBox="0 0 180 16" fill="none" aria-hidden="true">
+                <path
+                  d="M2 9c15-11 27-11 42 0s27 11 42 0 27-11 42 0 27 11 40 1"
+                  stroke="var(--lime)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+            <p className={styles.heroTagline}>маркетплейс</p>
             <p className={styles.heroText}>
               Новые товары от разных продавцов в одном месте - выбирайте по категории и цене.
             </p>
           </div>
           <div className={`${styles.heroGraphic} fade-in-up`} style={{ animationDelay: "0.15s" }}>
-            <HeroGraphic />
+            <HeroCatalog items={featuredListings} />
           </div>
         </div>
       </section>

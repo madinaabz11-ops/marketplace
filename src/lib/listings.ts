@@ -54,3 +54,12 @@ export async function getListings(filters: ListingFilters) {
       l.description.toLocaleLowerCase("ru").includes(q)
   );
 }
+
+export async function getFeaturedListings(take: number) {
+  return prisma.listing.findMany({
+    where: { status: "active" },
+    orderBy: { createdAt: "desc" },
+    take,
+    select: { id: true, title: true, price: true, imageUrl: true },
+  });
+}
