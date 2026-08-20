@@ -1,7 +1,7 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: #14140f;
+  background: var(--accent-deep);
   margin-bottom: 40px;
 }
 
@@ -20,8 +20,8 @@
 .shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(10, 10, 8, 0.94) 0%, rgba(10, 10, 8, 0.75) 42%, rgba(10, 10, 8, 0.35) 100%),
-    linear-gradient(0deg, rgba(10, 10, 8, 0.9) 0%, rgba(10, 10, 8, 0) 30%);
+  background: linear-gradient(90deg, rgba(8, 31, 26, 0.95) 0%, rgba(8, 31, 26, 0.8) 42%, rgba(8, 31, 26, 0.4) 100%),
+    linear-gradient(0deg, rgba(8, 31, 26, 0.92) 0%, rgba(8, 31, 26, 0) 30%);
 }
 
 .content {
@@ -59,7 +59,7 @@
   display: flex;
   margin-top: 30px;
   max-width: 440px;
-  border-radius: var(--radius);
+  border-radius: 0;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
