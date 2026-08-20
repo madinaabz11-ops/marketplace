@@ -20,8 +20,8 @@
 .shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(8, 31, 26, 0.95) 0%, rgba(8, 31, 26, 0.8) 42%, rgba(8, 31, 26, 0.4) 100%),
-    linear-gradient(0deg, rgba(8, 31, 26, 0.92) 0%, rgba(8, 31, 26, 0) 30%);
+  background: linear-gradient(90deg, rgba(5, 51, 48, 0.95) 0%, rgba(5, 51, 48, 0.8) 42%, rgba(5, 51, 48, 0.4) 100%),
+    linear-gradient(0deg, rgba(5, 51, 48, 0.92) 0%, rgba(5, 51, 48, 0) 30%);
 }
 
 .content {
