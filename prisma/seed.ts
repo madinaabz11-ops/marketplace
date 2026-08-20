@@ -33,7 +33,7 @@ async function main() {
       description: "Новый, запечатан в заводской плёнке. Официальная гарантия 12 месяцев. Быстрая доставка.",
       price: 89000,
       category: "Электроника",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Xiaomi_Redmi_Note_10_Pro.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Redmi_note_9_pro_black.jpg?width=600",
       sellerId: irina.id,
     },
     {
@@ -49,7 +49,7 @@ async function main() {
       description: "Новый велосипед в сборе. Рама 19 дюймов, 21 скорость. Гарантия производителя.",
       price: 145000,
       category: "Спорт и отдых",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Instinctiv_gearbox_mountain_bike.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/ZOOMLP-5447-Zesty-AM-827-ESHOCK-075.jpg?width=600",
       sellerId: daniyar.id,
     },
     {
@@ -57,7 +57,7 @@ async function main() {
       description: "Новая, в упаковке. Полный комплект колышков и растяжек, инструкция внутри.",
       price: 28000,
       category: "Спорт и отдых",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Coleman_Pop-Up_Tent.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/OutDoor%202018,%20Friedrichshafen%20(1X7A0534).jpg?width=600",
       sellerId: daniyar.id,
     },
     {
@@ -65,7 +65,7 @@ async function main() {
       description: "Новый, в заводской упаковке. Механизм еврокнижка, сборка по инструкции.",
       price: 65000,
       category: "Мебель",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Sofa_bed_at_Ashley_HomeStore_-_December_2022_-_Sarah_Stierch.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Belizesofa.jpg?width=600",
       sellerId: sveta.id,
     },
     {
@@ -81,7 +81,7 @@ async function main() {
       description: "Новая, с биркой, оригинал. Тёплый пуховый наполнитель.",
       price: 24000,
       category: "Одежда и обувь",
-      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Adidas_Helionic_Down_Jacket.jpg?width=600",
+      imageUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Polo%20Ralph%20Lauren%20down%20jacket%20with%20Aztec%20style%20print.jpg?width=600",
       sellerId: irina.id,
     },
     {
