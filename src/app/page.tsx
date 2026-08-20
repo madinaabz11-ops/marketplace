@@ -1,11 +1,13 @@
-import { getListings, type ListingSort } from "@/lib/listings";
+import { getListings, getCategoryCounts, type ListingSort } from "@/lib/listings";
 import { getCurrentUser } from "@/lib/auth";
 import { getCartListingIds } from "@/lib/cart";
 import { getFavoriteListingIds } from "@/lib/favorites";
 import FilterBar from "@/components/FilterBar";
 import ListingCard from "@/components/ListingCard";
-import HeroMark from "@/components/HeroMark";
+import PromoHero from "@/components/PromoHero";
 import styles from "./page.module.css";
+
+const HERO_STAT_CATEGORIES = ["Электроника", "Одежда и обувь", "Мебель", "Спорт и отдых", "Хобби и творчество"];
 
 export default async function Home({
   searchParams,
@@ -21,37 +23,17 @@ export default async function Home({
   const sort = sortOptions.includes(sp.sort as ListingSort) ? (sp.sort as ListingSort) : undefined;
 
   const user = await getCurrentUser();
-  const [listings, cartListingIds, favoriteListingIds] = await Promise.all([
+  const [listings, cartListingIds, favoriteListingIds, heroStats] = await Promise.all([
     getListings({ q, category, minPrice, maxPrice, sort }),
     getCartListingIds(user?.id),
     getFavoriteListingIds(user?.id),
+    getCategoryCounts(HERO_STAT_CATEGORIES),
   ]);
   const hasFilters = Boolean(q || category || minPrice || maxPrice);
 
   return (
     <>
-      <section className={styles.hero}>
-        <div className={`wrap ${styles.heroInner}`}>
-          <div className="fade-in-up">
-            <div className={styles.heroWordmark}>
-              <h1 className={styles.heroName}>Wiskons</h1>
-              <svg className={styles.heroSquiggle} viewBox="0 0 180 16" fill="none" aria-hidden="true">
-                <path
-                  d="M2 9c15-11 27-11 42 0s27 11 42 0 27-11 42 0 27 11 40 1"
-                  stroke="var(--lime)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-            <p className={styles.heroTagline}>маркетплейс товаров</p>
-            <p className={styles.heroSlogan}>С человеческим лицом.</p>
-          </div>
-          <div className={`${styles.heroGraphic} fade-in-up`} style={{ animationDelay: "0.15s" }}>
-            <HeroMark />
-          </div>
-        </div>
-      </section>
+      <PromoHero stats={heroStats} />
 
       <section id="listings" className={`wrap ${styles.listings}`}>
         <FilterBar q={q} category={category} minPrice={minPrice} maxPrice={maxPrice} sort={sort} />

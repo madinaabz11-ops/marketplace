@@ -54,3 +54,13 @@ export async function getListings(filters: ListingFilters) {
       l.description.toLocaleLowerCase("ru").includes(q)
   );
 }
+
+export async function getCategoryCounts(categories: string[]) {
+  const rows = await prisma.listing.groupBy({
+    by: ["category"],
+    where: { status: "active", category: { in: categories } },
+    _count: { _all: true },
+  });
+  const counts = new Map(rows.map((r) => [r.category, r._count._all]));
+  return categories.map((category) => ({ category, count: counts.get(category) ?? 0 }));
+}
