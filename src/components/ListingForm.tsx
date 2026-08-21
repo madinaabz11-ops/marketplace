@@ -1,8 +1,8 @@
 "use client";
 
 import { useActionState } from "react";
-import { CATEGORIES, CATEGORY_ICONS } from "@/lib/constants";
 import type { ListingState } from "@/lib/actions/listings";
+import CategorySelect from "./CategorySelect";
 import styles from "./ListingForm.module.css";
 
 type Action = (prevState: ListingState, formData: FormData) => Promise<ListingState>;
@@ -47,16 +47,15 @@ export default function ListingForm({
         </div>
         <div className="field">
           <label htmlFor="category">Категория</label>
-          <select id="category" name="category" defaultValue={initial?.category ?? ""} required>
-            <option value="" disabled>
-              Выберите категорию
-            </option>
-            {CATEGORIES.map((c) => (
-              <option key={c} value={c}>
-                {CATEGORY_ICONS[c]} {c}
-              </option>
-            ))}
-          </select>
+          <CategorySelect
+            id="category"
+            name="category"
+            defaultValue={initial?.category ?? ""}
+            variant="field"
+            placeholder="Выберите категорию"
+            hideAllOption
+            ariaLabel="Категория"
+          />
         </div>
       </div>
 

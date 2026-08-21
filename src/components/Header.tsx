@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { CATEGORIES, CATEGORY_ICONS } from "@/lib/constants";
+import { CATEGORIES } from "@/lib/constants";
+import { CategoryIcon } from "@/lib/categoryIcons";
+import CategorySelect from "./CategorySelect";
 import styles from "./Header.module.css";
 
 type User = {
@@ -51,14 +53,7 @@ export default function Header({
         </label>
 
         <form action="/#listings" method="GET" className={styles.searchForm}>
-          <select name="category" className={styles.searchCategory} aria-label="Категория" defaultValue="">
-            <option value="">🗂️ Все категории</option>
-            {CATEGORIES.map((c) => (
-              <option key={c} value={c}>
-                {CATEGORY_ICONS[c]} {c}
-              </option>
-            ))}
-          </select>
+          <CategorySelect name="category" variant="header" ariaLabel="Категория" />
           <input
             type="text"
             name="q"
@@ -135,7 +130,8 @@ export default function Header({
           <nav className={styles.categoryList} aria-label="Категории товаров">
             {CATEGORIES.map((c) => (
               <Link key={c} href={`/?category=${encodeURIComponent(c)}#listings`}>
-                {CATEGORY_ICONS[c]} {c}
+                <CategoryIcon category={c} />
+                {c}
               </Link>
             ))}
           </nav>
