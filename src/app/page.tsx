@@ -39,10 +39,11 @@ export default async function Home({
   ]);
   const hasFilters = Boolean(q || category || minPrice || maxPrice);
   const resultsCount = listings.length;
+  const found = resultsCount === 1 ? "Найден" : "Найдено";
   const heading = q
-    ? `По запросу «${q}» найдено ${resultsCount} ${pluralizeTovar(resultsCount)}`
+    ? `По запросу «${q}» ${found.toLowerCase()} ${resultsCount} ${pluralizeTovar(resultsCount)}`
     : hasFilters
-    ? `Найдено ${resultsCount} ${pluralizeTovar(resultsCount)}`
+    ? `${found} ${resultsCount} ${pluralizeTovar(resultsCount)}`
     : "Свежие объявления";
 
   return (
