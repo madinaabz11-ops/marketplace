@@ -9,6 +9,14 @@ import styles from "./page.module.css";
 
 const HERO_STAT_CATEGORIES = ["Электроника", "Одежда и обувь", "Мебель", "Спорт и отдых", "Хобби и творчество"];
 
+function pluralizeTovar(count: number) {
+  const mod10 = count % 10;
+  const mod100 = count % 100;
+  if (mod10 === 1 && mod100 !== 11) return "товар";
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return "товара";
+  return "товаров";
+}
+
 export default async function Home({
   searchParams,
 }: {
@@ -30,6 +38,12 @@ export default async function Home({
     getCategoryCounts(HERO_STAT_CATEGORIES),
   ]);
   const hasFilters = Boolean(q || category || minPrice || maxPrice);
+  const resultsCount = listings.length;
+  const heading = q
+    ? `По запросу «${q}» найдено ${resultsCount} ${pluralizeTovar(resultsCount)}`
+    : hasFilters
+    ? `Найдено ${resultsCount} ${pluralizeTovar(resultsCount)}`
+    : "Свежие объявления";
 
   return (
     <>
@@ -39,8 +53,8 @@ export default async function Home({
         <FilterBar q={q} category={category} minPrice={minPrice} maxPrice={maxPrice} sort={sort} />
 
         <div className={styles.resultsHead}>
-          <h2 className="h2">{hasFilters ? "Результаты поиска" : "Свежие объявления"}</h2>
-          <span className={styles.count}>{listings.length}</span>
+          <h2 className="h2">{heading}</h2>
+          {!hasFilters && <span className={styles.count}>{resultsCount}</span>}
         </div>
 
         {listings.length === 0 ? (
