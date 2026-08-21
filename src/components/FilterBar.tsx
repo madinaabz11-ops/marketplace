@@ -1,4 +1,4 @@
-import { CATEGORIES } from "@/lib/constants";
+import { CATEGORIES, CATEGORY_ICONS } from "@/lib/constants";
 import type { ListingSort } from "@/lib/listings";
 import styles from "./FilterBar.module.css";
 
@@ -34,10 +34,10 @@ export default function FilterBar({
       />
 
       <select name="category" defaultValue={category ?? ""} className={styles.select} aria-label="Категория">
-        <option value="">Все категории</option>
+        <option value="">🗂️ Все категории</option>
         {CATEGORIES.map((c) => (
           <option key={c} value={c}>
-            {c}
+            {CATEGORY_ICONS[c]} {c}
           </option>
         ))}
       </select>

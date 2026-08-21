@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { CATEGORIES } from "@/lib/constants";
+import { CATEGORIES, CATEGORY_ICONS } from "@/lib/constants";
 import type { ListingState } from "@/lib/actions/listings";
 import styles from "./ListingForm.module.css";
 
@@ -53,7 +53,7 @@ export default function ListingForm({
             </option>
             {CATEGORIES.map((c) => (
               <option key={c} value={c}>
-                {c}
+                {CATEGORY_ICONS[c]} {c}
               </option>
             ))}
           </select>

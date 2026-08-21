@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { CATEGORIES } from "@/lib/constants";
+import { CATEGORIES, CATEGORY_ICONS } from "@/lib/constants";
 import styles from "./Header.module.css";
 
 type User = {
@@ -52,10 +52,10 @@ export default function Header({
 
         <form action="/#listings" method="GET" className={styles.searchForm}>
           <select name="category" className={styles.searchCategory} aria-label="Категория" defaultValue="">
-            <option value="">Все категории</option>
+            <option value="">🗂️ Все категории</option>
             {CATEGORIES.map((c) => (
               <option key={c} value={c}>
-                {c}
+                {CATEGORY_ICONS[c]} {c}
               </option>
             ))}
           </select>
@@ -135,7 +135,7 @@ export default function Header({
           <nav className={styles.categoryList} aria-label="Категории товаров">
             {CATEGORIES.map((c) => (
               <Link key={c} href={`/?category=${encodeURIComponent(c)}#listings`}>
-                {c}
+                {CATEGORY_ICONS[c]} {c}
               </Link>
             ))}
           </nav>
