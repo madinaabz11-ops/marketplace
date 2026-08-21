@@ -69,7 +69,7 @@ export default function PromoHero({ stats }: { stats: PromoStat[] }) {
           Мебель, электроника, одежда и другие товары от разных продавцов — в одном каталоге.
         </p>
 
-        <form action="/" method="GET" className={`${styles.search} fade-in-up`} style={{ animationDelay: "0.15s" }}>
+        <form action="/#listings" method="GET" className={`${styles.search} fade-in-up`} style={{ animationDelay: "0.15s" }}>
           <input type="text" name="q" placeholder="Что вы ищете?" className={styles.searchInput} aria-label="Поиск товаров" />
           <button type="submit" className={styles.searchBtn} aria-label="Найти">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">

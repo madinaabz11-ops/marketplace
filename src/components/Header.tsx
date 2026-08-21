@@ -50,7 +50,7 @@ export default function Header({
           <span></span>
         </label>
 
-        <form action="/" method="GET" className={styles.searchForm}>
+        <form action="/#listings" method="GET" className={styles.searchForm}>
           <select name="category" className={styles.searchCategory} aria-label="Категория" defaultValue="">
             <option value="">Все категории</option>
             {CATEGORIES.map((c) => (

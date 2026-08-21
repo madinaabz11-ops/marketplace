@@ -23,7 +23,7 @@ export default function FilterBar({
   sort?: ListingSort;
 }) {
   return (
-    <form action="/" method="GET" className={`${styles.bar} fade-in-up`} style={{ animationDelay: "0.1s" }}>
+    <form action="/#listings" method="GET" className={`${styles.bar} fade-in-up`} style={{ animationDelay: "0.1s" }}>
       <input
         type="text"
         name="q"
