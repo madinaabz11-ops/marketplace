@@ -5,6 +5,9 @@ import { getCurrentUser } from "@/lib/auth";
 import { deleteListingAction, toggleSoldAction } from "@/lib/actions/listings";
 import { addToCartAction, removeFromCartAction } from "@/lib/actions/cart";
 import { addToFavoritesAction, removeFromFavoritesAction } from "@/lib/actions/favorites";
+import { getCartListingIds } from "@/lib/cart";
+import { getFavoriteListingIds } from "@/lib/favorites";
+import ListingCard from "@/components/ListingCard";
 import styles from "./page.module.css";
 
 const priceFormatter = new Intl.NumberFormat("ru-KZ");
@@ -50,6 +53,17 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
     : [null, null];
   const inCart = Boolean(cartItem);
   const isFavorite = Boolean(favorite);
+
+  const [similarListings, cartListingIds, favoriteListingIds] = await Promise.all([
+    prisma.listing.findMany({
+      where: { category: listing.category, status: "active", id: { not: listing.id } },
+      include: { seller: { select: { name: true } } },
+      orderBy: { createdAt: "desc" },
+      take: 4,
+    }),
+    getCartListingIds(user?.id),
+    getFavoriteListingIds(user?.id),
+  ]);
 
   return (
     <section className="wrap">
@@ -155,6 +169,23 @@ export default async function ListingPage({ params }: { params: Promise<{ id: st
           )}
         </div>
       </div>
+
+      {similarListings.length > 0 && (
+        <div className={styles.similar}>
+          <h2 className="h2">Похожие товары</h2>
+          <div className={styles.similarGrid}>
+            {similarListings.map((item) => (
+              <ListingCard
+                key={item.id}
+                listing={item}
+                currentUserId={user?.id}
+                inCart={cartListingIds.has(item.id)}
+                isFavorite={favoriteListingIds.has(item.id)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
