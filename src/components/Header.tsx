@@ -112,8 +112,9 @@ export default function Header({
                 </span>
                 <span className={styles.cartLabel}>Корзина</span>
               </Link>
-              <Link href="/account" className={styles.avatar} title={user.name} aria-label="Личный кабинет">
-                {user.name.charAt(0).toUpperCase()}
+              <Link href="/account" className={styles.accountLink} title={user.name} aria-label="Личный кабинет">
+                <span className={styles.avatar}>{user.name.charAt(0).toUpperCase()}</span>
+                <span className={styles.cartLabel}>Личный кабинет</span>
               </Link>
             </>
           ) : (
