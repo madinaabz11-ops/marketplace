@@ -263,7 +263,7 @@
 }
 
 @media (max-width: 760px) {
-  .burger { display: flex; }
+  .burger { display: flex; margin-left: auto; }
 
   .topRow { padding: 12px 0; }
   .searchForm { flex-basis: 100%; max-width: none; }
