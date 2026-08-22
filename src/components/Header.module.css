@@ -190,7 +190,6 @@
 .postLink::after { display: none; }
 
 .cartLink {
-  position: relative;
   display: flex;
   align-items: center;
   color: var(--ink-soft);
@@ -199,6 +198,10 @@
 .cartLink svg { width: 22px; height: 22px; }
 .cartLink:hover { color: var(--ink); }
 .cartLink::after { display: none; }
+
+.cartIconWrap { position: relative; display: flex; }
+
+.cartLabel { display: none; }
 
 .cartBadge {
   position: absolute;
@@ -287,6 +290,9 @@
   }
 
   .menuToggle:checked ~ .nav { transform: translateX(0); }
+
+  .cartLink { width: 100%; gap: 12px; font-size: 0.95rem; font-weight: 600; color: var(--ink); }
+  .cartLabel { display: inline; }
 
   .menuToggle:checked ~ .burger span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .menuToggle:checked ~ .burger span:nth-child(2) { opacity: 0; }

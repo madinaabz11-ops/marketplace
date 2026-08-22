@@ -82,29 +82,35 @@ export default function Header({
                 + Разместить
               </Link>
               <Link href="/favorites" className={styles.cartLink} aria-label="Избранное">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M12 20.5s-7.5-4.6-9.8-9.3C.7 7.9 2.2 4.5 5.6 3.7c2-.5 4 .3 5.2 2.1a.9.9 0 0 0 1.4 0c1.2-1.8 3.2-2.6 5.2-2.1 3.4.8 4.9 4.2 3.4 7.5-2.3 4.7-9.8 9.3-9.8 9.3z"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                {favoritesCount > 0 && <span className={styles.cartBadge}>{favoritesCount}</span>}
+                <span className={styles.cartIconWrap}>
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M12 20.5s-7.5-4.6-9.8-9.3C.7 7.9 2.2 4.5 5.6 3.7c2-.5 4 .3 5.2 2.1a.9.9 0 0 0 1.4 0c1.2-1.8 3.2-2.6 5.2-2.1 3.4.8 4.9 4.2 3.4 7.5-2.3 4.7-9.8 9.3-9.8 9.3z"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  {favoritesCount > 0 && <span className={styles.cartBadge}>{favoritesCount}</span>}
+                </span>
+                <span className={styles.cartLabel}>Избранное</span>
               </Link>
               <Link href="/cart" className={styles.cartLink} aria-label="Корзина">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path
-                    d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L20 8H6"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <circle cx="9.5" cy="20" r="1.4" fill="currentColor" />
-                  <circle cx="17" cy="20" r="1.4" fill="currentColor" />
-                </svg>
-                {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
+                <span className={styles.cartIconWrap}>
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                      d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L20 8H6"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <circle cx="9.5" cy="20" r="1.4" fill="currentColor" />
+                    <circle cx="17" cy="20" r="1.4" fill="currentColor" />
+                  </svg>
+                  {cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
+                </span>
+                <span className={styles.cartLabel}>Корзина</span>
               </Link>
               <Link href="/account" className={styles.avatar} title={user.name} aria-label="Личный кабинет">
                 {user.name.charAt(0).toUpperCase()}
