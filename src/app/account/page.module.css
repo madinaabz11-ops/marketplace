@@ -20,6 +20,8 @@
   gap: 12px;
 }
 
+.headerActions form { display: flex; }
+
 .sectionTitle { margin-bottom: 20px; }
 
 .empty {
