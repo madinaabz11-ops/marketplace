@@ -6,7 +6,12 @@ import { useEffect, useRef } from "react";
 import { CATEGORIES } from "@/lib/constants";
 import { CategoryIcon } from "@/lib/categoryIcons";
 import CategorySelect from "./CategorySelect";
+import CategoryMoreMenu from "./CategoryMoreMenu";
 import styles from "./Header.module.css";
+
+const VISIBLE_CATEGORY_COUNT = 5;
+const visibleCategories = CATEGORIES.slice(0, VISIBLE_CATEGORY_COUNT);
+const moreCategories = CATEGORIES.slice(VISIBLE_CATEGORY_COUNT);
 
 type User = {
   id: string;
@@ -128,12 +133,13 @@ export default function Header({
             Категории
           </Link>
           <nav className={styles.categoryList} aria-label="Категории товаров">
-            {CATEGORIES.map((c) => (
+            {visibleCategories.map((c) => (
               <Link key={c} href={`/?category=${encodeURIComponent(c)}#listings`}>
                 <CategoryIcon category={c} />
                 {c}
               </Link>
             ))}
+            <CategoryMoreMenu categories={moreCategories} />
           </nav>
         </div>
       </div>

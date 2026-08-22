@@ -1,0 +1,59 @@
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  transition: color 0.2s var(--ease);
+}
+.trigger svg:first-child {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--accent-deep);
+}
+.trigger:hover { color: var(--accent-deep); }
+
+.chevron {
+  width: 9px;
+  height: 6px;
+  flex-shrink: 0;
+  color: var(--ink-faint);
+  transition: transform 0.2s var(--ease);
+}
+.trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+
+.panel {
+  position: fixed;
+  z-index: 1000;
+  min-width: 200px;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 6px;
+}
+
+.panel a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: calc(var(--radius) - 1px);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+.panel a:hover { background: var(--bg-deep); color: var(--ink); }
+.panel a svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: inherit;
+}
