@@ -21,7 +21,11 @@ export default function CategoryMoreMenu({ categories }: { categories: Category[
   useLayoutEffect(() => {
     if (!open || !triggerRef.current) return;
     const rect = triggerRef.current.getBoundingClientRect();
-    setCoords({ top: rect.bottom + 8, left: rect.left });
+    const margin = 12;
+    const panelWidth = panelRef.current?.offsetWidth ?? 200;
+    let left = Math.min(rect.left, window.innerWidth - panelWidth - margin);
+    left = Math.max(left, margin);
+    setCoords({ top: rect.bottom + 8, left });
   }, [open]);
 
   useEffect(() => {
