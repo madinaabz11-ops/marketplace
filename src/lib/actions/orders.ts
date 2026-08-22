@@ -26,7 +26,7 @@ export async function createOrderAction(_prevState: CheckoutState, formData: For
   const available = cartItems.filter((item) => item.listing.status === "active");
   if (available.length === 0) return { error: "Корзина пуста" };
 
-  const totalPrice = available.reduce((sum, item) => sum + item.listing.price, 0);
+  const totalPrice = available.reduce((sum, item) => sum + item.listing.price * item.quantity, 0);
   const listingIds = available.map((item) => item.listing.id);
 
   const order = await prisma.$transaction(async (tx) => {
@@ -40,6 +40,7 @@ export async function createOrderAction(_prevState: CheckoutState, formData: For
           create: available.map((item) => ({
             title: item.listing.title,
             price: item.listing.price,
+            quantity: item.quantity,
             listingId: item.listing.id,
           })),
         },

@@ -30,8 +30,11 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
       <ul className={styles.list}>
         {order.items.map((item) => (
           <li key={item.id} className={styles.row}>
-            <span>{item.title}</span>
-            <span>{priceFormatter.format(item.price)} ₸</span>
+            <span>
+              {item.title}
+              {item.quantity > 1 && ` × ${item.quantity}`}
+            </span>
+            <span>{priceFormatter.format(item.price * item.quantity)} ₸</span>
           </li>
         ))}
       </ul>

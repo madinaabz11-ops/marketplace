@@ -13,7 +13,7 @@ export default async function CheckoutPage() {
   const items = await getCartItems(user.id);
   if (items.length === 0) redirect("/cart");
 
-  const total = items.reduce((sum, item) => sum + item.listing.price, 0);
+  const total = items.reduce((sum, item) => sum + item.listing.price * item.quantity, 0);
 
   return (
     <section className={`wrap ${styles.page}`}>
@@ -28,8 +28,11 @@ export default async function CheckoutPage() {
           <ul className={styles.summaryList}>
             {items.map((item) => (
               <li key={item.id} className={styles.summaryRow}>
-                <span>{item.listing.title}</span>
-                <span>{priceFormatter.format(item.listing.price)} ₸</span>
+                <span>
+                  {item.listing.title}
+                  {item.quantity > 1 && ` × ${item.quantity}`}
+                </span>
+                <span>{priceFormatter.format(item.listing.price * item.quantity)} ₸</span>
               </li>
             ))}
           </ul>

@@ -54,6 +54,7 @@ model Listing {
 
 model CartItem {
   id        String   @id @default(cuid())
+  quantity  Int      @default(1)
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
@@ -89,6 +90,7 @@ model OrderItem {
   id        String   @id @default(cuid())
   title     String
   price     Int
+  quantity  Int      @default(1)
   order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId   String
   listing   Listing? @relation(fields: [listingId], references: [id], onDelete: SetNull)

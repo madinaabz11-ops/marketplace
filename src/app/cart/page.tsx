@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 import { getCartItems } from "@/lib/cart";
-import { removeFromCartAction } from "@/lib/actions/cart";
+import { removeFromCartAction, increaseCartQuantityAction, decreaseCartQuantityAction } from "@/lib/actions/cart";
 import styles from "./page.module.css";
 
 const priceFormatter = new Intl.NumberFormat("ru-KZ");
@@ -12,7 +12,7 @@ export default async function CartPage() {
   if (!user) redirect("/login");
 
   const items = await getCartItems(user.id);
-  const total = items.reduce((sum, item) => sum + item.listing.price, 0);
+  const total = items.reduce((sum, item) => sum + item.listing.price * item.quantity, 0);
 
   return (
     <section className={`wrap ${styles.page}`}>
@@ -56,7 +56,31 @@ export default async function CartPage() {
                   </div>
                 </Link>
 
-                <p className={styles.itemPrice}>{priceFormatter.format(item.listing.price)} ₸</p>
+                <div className={styles.qty}>
+                  <form action={decreaseCartQuantityAction.bind(null, item.listing.id)}>
+                    <button
+                      type="submit"
+                      className={styles.qtyBtn}
+                      aria-label="Уменьшить количество"
+                      disabled={item.quantity <= 1}
+                    >
+                      −
+                    </button>
+                  </form>
+                  <span className={styles.qtyValue}>{item.quantity}</span>
+                  <form action={increaseCartQuantityAction.bind(null, item.listing.id)}>
+                    <button type="submit" className={styles.qtyBtn} aria-label="Увеличить количество">
+                      +
+                    </button>
+                  </form>
+                </div>
+
+                <p className={styles.itemPrice}>
+                  {priceFormatter.format(item.listing.price * item.quantity)} ₸
+                  {item.quantity > 1 && (
+                    <span className={styles.itemUnitPrice}>{priceFormatter.format(item.listing.price)} ₸ / шт</span>
+                  )}
+                </p>
 
                 <form action={removeFromCartAction.bind(null, item.listing.id)}>
                   <button type="submit" className="btn btn--ghost btn--sm">

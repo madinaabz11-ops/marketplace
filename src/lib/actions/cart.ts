@@ -28,3 +28,28 @@ export async function removeFromCartAction(listingId: string) {
   revalidatePath("/cart");
   revalidatePath(`/listing/${listingId}`);
 }
+
+export async function increaseCartQuantityAction(listingId: string) {
+  const user = await requireUser();
+  await prisma.cartItem.updateMany({
+    where: { userId: user.id, listingId },
+    data: { quantity: { increment: 1 } },
+  });
+
+  revalidatePath("/cart");
+}
+
+export async function decreaseCartQuantityAction(listingId: string) {
+  const user = await requireUser();
+  const item = await prisma.cartItem.findUnique({
+    where: { userId_listingId: { userId: user.id, listingId } },
+  });
+  if (!item || item.quantity <= 1) return;
+
+  await prisma.cartItem.update({
+    where: { userId_listingId: { userId: user.id, listingId } },
+    data: { quantity: { decrement: 1 } },
+  });
+
+  revalidatePath("/cart");
+}
