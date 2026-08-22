@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Public_Sans } from "next/font/google";
 import "./globals.css";
 import { getCurrentUser } from "@/lib/auth";
@@ -22,6 +22,11 @@ const publicSans = Public_Sans({
 export const metadata: Metadata = {
   title: "Wiskons - маркетплейс товаров",
   description: "Новые товары от разных продавцов в одном месте. Поиск по категориям и цене.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
