@@ -185,9 +185,9 @@
 }
 
 .postLink {
-  color: var(--lime-deep) !important;
+  padding-bottom: 0;
 }
-.postLink::after { background: var(--lime) !important; }
+.postLink::after { display: none; }
 
 .cartLink {
   position: relative;

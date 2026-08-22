@@ -73,7 +73,7 @@ export default function Header({
           <Link href="/#listings">Все объявления</Link>
           {user ? (
             <>
-              <Link href="/account/new" className={styles.postLink}>
+              <Link href="/account/new" className={`btn btn--primary btn--sm ${styles.postLink}`}>
                 + Разместить
               </Link>
               <Link href="/favorites" className={styles.cartLink} aria-label="Избранное">
